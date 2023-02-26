@@ -1,8 +1,6 @@
 # ECSチュートリアル
 
-##　DockerでFlask構築
-
-
+## DockerでFlask構築
 
 環境構築はCloud9で行った　よってDockerはインストール済み
 (Cloudshellで行おうとしたが、Dockerが入っておらず環境構築が面倒であった)
@@ -168,6 +166,14 @@ docker rm:コンテナの削除
 https://www.kagoya.jp/howto/cloud/container/dockerimage/
 https://qiita.com/zembutsu/items/24558f9d0d254e33088f
 
+
+
+## ECRにpush
+
+AWSコンソールのECR画面に「プッシュコマンドの表示」があるので、それを見れば基本できる。
+
+注意：pushする際にタグは　「{AWSアカウント番号}.dkr.ecr.ap-northeast-1.amazonaws.com/{レポジトリ名}:latest」
+のような記載方法でないといけない
 
 
 
