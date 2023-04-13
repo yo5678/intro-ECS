@@ -2,10 +2,10 @@
 
 ## DockerでFlask構築
 
-環境構築はCloud9で行った　よってDockerはインストール済み
-(Cloudshellで行おうとしたが、Dockerが入っておらず環境構築が面倒であった)
+環境構築はCloud9で行った（Cloud9にはDockerはインストール済み）
+(Cloudshellで行う場合は、Dockerが入っていないので注意すること)
 
-注意点：日本以外のところで Docker Buildを行うと、タイムゾーンのエラーが発生した
+注意点：日本リージョン以外で docker buildを行うと、タイムゾーンのエラーが発生した
 
 こちらの記事を参考に作成
 https://tech-diary.net/how-to-create-flask-container/
@@ -117,7 +117,7 @@ if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0',port=5000)
 ~~~
 
-注意1：Docerfileを修正してイメージを作成し直す場合、docker build -t <タグ名>としても、レポジトリ名やタグ名が<none>になってしまう場合があった。Dockerfileないのコマンドにエラーがあるとそのような仕組みなるらしく、さらにDockerfileを修正しても、キャッシュが残っているため修正されなかった。イメージを一度削除すること
+注意1：Docerfileを修正してイメージを作成し直す場合、docker build -t <タグ名>としても、レポジトリ名やタグ名が<none>になってしまう場合があった。Dockerfile内のコマンドにエラーがあるとそのような仕組みなるらしく、さらにDockerfileを修正しても、キャッシュが残っているため修正されなかった。イメージを一度削除すること
 
 注意2:flaskのportを5000で明示しておくと、わかりやすい。host=0.0.0.0にしておかないとおかしくなる（参考：https://qiita.com/amuyikam/items/01a8c16e3ddbcc734a46）
 
@@ -140,7 +140,7 @@ docker ps -a　
 一度コンテナが起動するとともに止まってしまうことがあった。
 その際は以下のコマンドを使用すると良い。ただのファイル名のミスだった。
 ~~~
-PowerRole:~/environment/python-docker $ docker logs コンテナID
+*****/environment/python-docker $ docker logs コンテナID
 python3: can't open file 'app.py': [Errno 2] No such file or directory
 python3: can't open file 'app.py': [Errno 2] No such file or directory
 python3: can't open file 'app.py': [Errno 2] No such file or directory
@@ -256,9 +256,6 @@ curl http://x.x.x.x:5000
 <p>Hello, World!</p>%
 
 ~~~
-
-あとは削除しておしまい
-
 
 
 # 全体の参考になるかも
